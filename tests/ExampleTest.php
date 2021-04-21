@@ -19,10 +19,18 @@ class ExampleTest extends TestCase
         );
     }
 
-    public function testUserApi()
+    public function testUsersApi()
     {
         $response = $this->call('GET', '/users');
 
         $this->assertEquals(200, $response->status());
+    }
+
+    public function testUserApi()
+    {
+        $this->json('GET', '/user/1')
+            ->seeJson([
+                'email' => 'test@test.com'
+            ]);
     }
 }

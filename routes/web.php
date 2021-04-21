@@ -20,3 +20,10 @@ $router->get('/', function () use ($router) {
 $router->get('/users', function () {
     return [];
 });
+
+$router->get('/user/{id}', function ($id) {
+    return [
+        'name' => 'Tester',
+        'email' => 'test@test.com'
+    ];
+});
