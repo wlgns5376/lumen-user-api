@@ -1,10 +1,10 @@
-FROM php7.4-fpm-alpine
+FROM php:7.4-fpm-alpine
 
-RUN apk add mysql mysql-client
 
-# Install Composer
-RUN curl -sSL http://getcomposer.org/installer | php \
-&& mv composer.phar /usr/local/bin/composer \
-&& chmod +x /usr/local/bin/composer
+RUN docker-php-ext-install mysqli pdo_mysql
+
+RUN apk add --no-cache composer
+RUN apk add --no-cache bash curl git vim nano openssh
+RUN apk add mariadb-client
 
 WORKDIR /var/www/html
