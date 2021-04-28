@@ -2,9 +2,11 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+use App\Models\User;
 
 class ExampleTest extends TestCase
 {
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -19,18 +21,22 @@ class ExampleTest extends TestCase
         );
     }
 
-    public function testUsersApi()
+    public function testCreateUser()
     {
-        $response = $this->call('GET', '/users');
+        $user = User::factory()->create();
 
-        $this->assertEquals(200, $response->status());
+        $this->assertNotEmpty($user->name);
     }
 
     public function testUserApi()
     {
-        $this->json('GET', '/user/1')
+        $user = User::factory()->create();
+
+        $response = $this->json('GET', '/user/'.$user->id);
+        $response
             ->seeJson([
-                'email' => 'test@test.com'
+                'id' => $user->id
             ]);
+
     }
 }
