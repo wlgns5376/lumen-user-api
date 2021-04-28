@@ -18,12 +18,9 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/users', function () {
-    return [];
+    return \App\Models\User::all();
 });
 
 $router->get('/user/{id}', function ($id) {
-    return [
-        'name' => 'Tester',
-        'email' => 'test@test.com'
-    ];
+    return \App\Models\User::find($id);
 });
