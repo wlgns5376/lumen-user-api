@@ -13,14 +13,11 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
 
-$router->get('/users', function () {
+$router->get('/', function () {
     return \App\Models\User::all();
 });
 
-$router->get('/user/{id}', function ($id) {
+$router->get('/{id}', function ($id) {
     return \App\Models\User::find($id);
 });
