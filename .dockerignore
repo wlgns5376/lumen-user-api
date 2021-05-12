@@ -1,0 +1,13 @@
+/.github
+/.git
+/.devcontainer
+/.vscode
+/vendor
+/.env
+/.env.ci
+Dockerfile
+docker-composer.yml
+storage/framework/cache/**
+storage/framework/sessions/**
+storage/framework/views/**
+storage/logs/**
