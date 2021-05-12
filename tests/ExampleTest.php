@@ -7,19 +7,6 @@ use App\Models\User;
 class ExampleTest extends TestCase
 {
     use DatabaseTransactions;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->get('/');
-
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
-    }
 
     public function testCreateUser()
     {
@@ -32,7 +19,7 @@ class ExampleTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->json('GET', '/user/'.$user->id);
+        $response = $this->json('GET', '/'.$user->id);
         $response
             ->seeJson([
                 'id' => $user->id
